@@ -1,0 +1,84 @@
+/**index.wxss**/
+.search-wrap{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #FFF;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+.search-wrap image{
+  width: 48rpx;
+  height: 48rpx;
+}
+.search-wrap .input-wrap{
+  width: calc(100% - 60rpx);
+  height: 58rpx;
+  background: #f1f1f1;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+}
+.search-wrap input{
+  flex: 1;
+  font-size: 30rpx;
+  padding-left: 10rpx;
+}
+.title{
+  font-size: 38rpx;
+  margin-bottom: 30rpx;
+}
+.content{
+  width: 100%;
+}
+
+.content .list{
+  width: calc(100% - 60rpx);
+  margin: auto;
+  height: 98rpx;
+  display: flex;
+  padding: 15rpx;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+.content .list .left{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.content .list .right{
+  flex: 1;
+  font-size: 24rpx;
+  color: #666;
+  text-align: right;
+}
+.content .list .title{
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 0;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.content .list .left .sub-title{
+  font-size: 24rpx;
+  color: #666;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.no-data{
+  padding-top: 200rpx;
+}
+.no-data image{
+  width: 350rpx;
+  margin: auto;
+}
+.no-data .sorry-tips{
+  font-size: 34rpx;
+  color: #808080;
+  margin-top: 30rpx;
+}

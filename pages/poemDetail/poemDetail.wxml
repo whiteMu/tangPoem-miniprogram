@@ -1,0 +1,8 @@
+<!--pages/poemDetail/poemDetail.wxml-->
+<view class="container">
+  <view class="title">{{poemData.title}}</view>
+  <view class="sub">[{{poemData.dynasty}}]{{poemData.author}}</view>
+  <view class="content">
+    <view wx:for="{{content}}" wx:key="index">{{item}}</view>
+  </view>
+</view>

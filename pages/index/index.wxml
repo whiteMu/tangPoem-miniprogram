@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="search-wrap">
+    <view class="input-wrap">
+      <image src="../../images/search-icon.png"/>
+      <input placeholder="搜索标题/作者/诗句" bindinput="getKeyword"/>
+    </view>
+  </view>
+  <view style="height: 108rpx;"></view>
+  <view class="content" wx:if="{{!noData}}">
+    <view class="list" wx:for="{{listData}}" wx:key="index" data-data="{{item}}" bindtap="goDetail">
+      <view class="left">
+        <view class="title">{{item.title}}</view>
+        <view class="sub-title">{{item.summary}}</view>
+      </view>
+      <view class="right">
+        <view class="des">[{{item.dynasty}}]{{item.author}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="no-data" wx:else>
+    <image mode="widthFix" src="../../images/icon_sorry.png"/>
+    <view class="sorry-tips">没有搜索到和相关"{{keyword}}"的内容</view>
+  </view>
+</view>

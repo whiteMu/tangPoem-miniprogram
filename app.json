@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/poemDetail/poemDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff4c00",
+    "navigationBarTitleText": "唐诗三百首",
+    "navigationBarTextStyle": "white"
+  }
+}
