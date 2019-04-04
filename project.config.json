@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
 	"appid": "wxa131db49137dbb58",
-	"projectname": "miniprogram-poetry",
+	"projectname": "tangpoem",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

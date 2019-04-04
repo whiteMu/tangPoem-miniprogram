@@ -15,7 +15,7 @@
   height: 48rpx;
 }
 .search-wrap .input-wrap{
-  width: calc(100% - 60rpx);
+  width: calc(100% - 40rpx);
   height: 58rpx;
   background: #f1f1f1;
   border-radius: 10rpx;
@@ -72,6 +72,10 @@
 }
 .no-data{
   padding-top: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .no-data image{
   width: 350rpx;
