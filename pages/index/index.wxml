@@ -17,9 +17,10 @@
         <view class="des">[{{item.dynasty}}]{{item.author}}</view>
       </view>
     </view>
+    <view class="list-tips">已经到底了哟~</view>
   </view>
   <view class="no-data" wx:else>
     <image mode="widthFix" src="../../images/icon_sorry.png"/>
-    <view class="sorry-tips">没有搜索到和相关"{{keyword}}"的内容</view>
+    <view class="sorry-tips">没有搜索到和"{{keyword}}"相关的内容</view>
   </view>
 </view>

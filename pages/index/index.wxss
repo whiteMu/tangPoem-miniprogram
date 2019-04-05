@@ -70,6 +70,13 @@
   text-overflow:ellipsis;
   white-space: nowrap;
 }
+.list-tips{
+  height: 68rpx;
+  line-height: 88rpx;
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+}
 .no-data{
   padding-top: 200rpx;
   display: flex;

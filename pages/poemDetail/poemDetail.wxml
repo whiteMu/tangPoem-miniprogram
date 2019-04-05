@@ -5,4 +5,29 @@
   <view class="content">
     <view wx:for="{{content}}" wx:key="index">{{item}}</view>
   </view>
+  <view class="appreciation">
+    <view class="option-bar">
+      <view class="item" data-optionid="0" bindtap="selectOption">
+        <view class="item-des {{optionid == 0?'active':''}}">注释</view>
+      </view>
+      <view class="item" data-optionid="1" bindtap="selectOption">
+        <view class="item-des {{optionid == 1?'active':''}}">译文</view>
+      </view>
+      <view class="item" data-optionid="2" bindtap="selectOption">
+        <view class="item-des {{optionid == 2?'active':''}}">赏析</view>
+      </view>
+    </view>
+    <view class="appreciation-content" wx:if="{{optionid == 0}}">
+      <view wx:for="{{annotation}}" wx:key="index">
+        <text class="sp">{{item.sp}}</text><text>{{item.def}}</text>
+      </view>
+    </view>
+    <view class="appreciation-content" wx:if="{{optionid == 1}}">
+      <view wx:for="{{translation}}" wx:key="index">{{item}}</view>
+      {{translation}}
+    </view>
+    <view class="appreciation-content" wx:if="{{optionid == 2}}">
+      <view wx:for="{{appreciation}}" wx:key="index">{{item}}</view>
+    </view>
+  </view>
 </view>

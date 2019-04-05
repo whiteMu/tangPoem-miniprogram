@@ -6,6 +6,32 @@
   align-items: center;
   box-sizing: border-box;
 } 
+@media only screen
+and (device-width : 414px)
+and (device-height : 896px)
+and (-webkit-device-pixel-ratio : 2) {
+  .container{
+    padding-bottom: 34px;
+  }
+}
+
+@media only screen
+and (device-width : 375px)
+and (device-height : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+  .container{
+    padding-bottom: 34px;
+  }
+}
+
+@media only screen
+and (device-width : 414px)
+and (device-height : 896px)
+and (-webkit-device-pixel-ratio : 3) {
+    .container{
+    padding-bottom: 34px;
+  }
+}
 view text input{
   box-sizing: border-box;
 }

@@ -6,7 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    poemData: {}
+    optionid: 0,
+    poemData: {},
+    content: [],
+    annotation: [],
+    translation: [],
+    appreciation: []
   },
 
   /**
@@ -27,8 +32,17 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let _this = this;
-    _this.handleContent();
+    let _this = this,
+      content = _this.handleContent(_this.data.poemData.content),
+      annotation = _this.handleContent(_this.data.poemData.annotation),
+      translation = _this.handleContent(_this.data.poemData.translation),
+      appreciation = _this.handleContent(_this.data.poemData.appreciation);
+    _this.setData({
+      content,
+      annotation: _this.handleAnnotation(annotation),
+      translation,
+      appreciation
+    })
   },
 
   /**
@@ -37,13 +51,33 @@ Page({
   onShow: function () {
 
   },
-  handleContent() {
+  handleContent(content) {
     let _this = this;
-    _this.setData({
-      content: _this.data.poemData.content.split("\r\n")
-    })
+    return content.split("\r\n");
   },
-
+  handleAnnotation(content){
+    let _this = this,
+      newArr = [];
+    content.forEach((item, index)=>{
+      let key = item.indexOf("："),
+        obj = {
+          sp: item.slice(0, key),
+          def: item.slice(key)
+        };
+      newArr.push(obj);
+    })
+    return newArr;
+  },
+  /**
+   * tab选择
+   */
+  selectOption(e){
+    let _this = this,
+      optionid = e.currentTarget.dataset.optionid;
+    _this.setData({
+      optionid
+    });
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
