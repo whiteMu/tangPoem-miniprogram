@@ -8,13 +8,27 @@
   </view>
   <view style="height: 108rpx;"></view>
   <view class="content" wx:if="{{!noData}}">
-    <view class="list" wx:for="{{listData}}" wx:key="index" data-data="{{item}}" bindtap="goDetail">
+    <view class="list" wx:if="{{!keyword}}" wx:for="{{listData}}" wx:key="index" data-data="{{item}}" bindtap="goDetail">
       <view class="left">
         <view class="title">{{item.title}}</view>
         <view class="sub-title">{{item.summary}}</view>
       </view>
       <view class="right">
         <view class="des">[{{item.dynasty}}]{{item.author}}</view>
+      </view>
+    </view>
+    <view class="list" wx:if="{{keyword}}" wx:for="{{listData}}" wx:key="index" data-data="{{item}}" bindtap="goDetail">
+      <view class="left">
+        <view class="title">
+          <text wx:if="{{value}}" wx:for="{{item.title}}" wx:key="key" wx:for-item="value" class="{{value == keyword? 'active': ''}}">{{value}}</text>
+        </view>
+        <view class="sub-title">
+          <text wx:if="{{value}}" wx:for="{{item.summary}}" wx:key="key" wx:for-item="value" class="{{value == keyword? 'active': ''}}">{{value}}</text>
+        </view>
+      </view>
+      <view class="right">
+        <view class="des">[{{item.dynasty}}]<text wx:if="{{value}}" wx:for="{{item.author}}" wx:key="key" wx:for-item="value" class="{{value == keyword? 'active': ''}}">{{value}}</text>
+        </view>
       </view>
     </view>
     <view class="list-tips">已经到底了哟~</view>

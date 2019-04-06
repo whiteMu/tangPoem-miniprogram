@@ -17,6 +17,7 @@
         <view class="item-des {{optionid == 2?'active':''}}">赏析</view>
       </view>
     </view>
+    <view class="option-line" animation="{{animationData}}"></view>
     <view class="appreciation-content" wx:if="{{optionid == 0}}">
       <view wx:for="{{annotation}}" wx:key="index">
         <text class="sp">{{item.sp}}</text><text>{{item.def}}</text>

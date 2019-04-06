@@ -73,9 +73,18 @@ Page({
    */
   selectOption(e){
     let _this = this,
-      optionid = e.currentTarget.dataset.optionid;
+      optionid = e.currentTarget.dataset.optionid,
+      left = "calc(33.3% * "+optionid+" + 16.6% - 60rpx)",
+      animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: "linear",
+        delay: 0,
+        transformOrigin: "50% 50%"
+      });
+    animation.left(left).step();
     _this.setData({
-      optionid
+      optionid,
+      animationData: animation.export()
     });
   },
   /**

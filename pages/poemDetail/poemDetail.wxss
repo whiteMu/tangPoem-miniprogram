@@ -24,6 +24,15 @@
 /**注释部分**/
 .appreciation {
   width: 100%;
+  position: relative;
+}
+.appreciation .option-line{
+  height: 6rpx;
+  width: 120rpx;
+  background: #ff4c00;
+  position: absolute;
+  top: 122rpx;
+  left: calc(16.6% - 60rpx);
 }
 .appreciation .option-bar{
   width: 100%;
@@ -51,7 +60,6 @@
 }
 .appreciation .option-bar .item .active{
   color: #ff4c00;
-  border-bottom: 6rpx solid #ff4c00;
 }
 .appreciation .appreciation-content{
   font-size: 30rpx;

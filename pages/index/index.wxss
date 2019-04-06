@@ -63,6 +63,9 @@
   text-overflow:ellipsis;
   white-space: nowrap;
 }
+.content .list .active{
+  color: #ff4c00!important;
+}
 .content .list .left .sub-title{
   font-size: 24rpx;
   color: #666;

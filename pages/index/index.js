@@ -17,14 +17,39 @@ Page({
   searchPoem(key){
     let _this = this;
     let resultList = [];
-    let originList = poemList;
+    let originList = JSON.parse(JSON.stringify(poemList));
     for (var i = 0; i < originList.length; i++){
       let poem = originList[i];
       if(_this.poemMatchKey(poem,key)){
-        resultList.push(poem);
+        //处理高亮数据
+        let data = _this.handleHighlightKeyword(poem, key);
+        resultList.push(data);
       }
     }
     return resultList;
+  },
+  //处理高亮数据
+  handleHighlightKeyword(data, key){
+    let _this = this;
+    let titleArr = data.title.split(key);
+    let title = data.title.indexOf(key) != -1?_this.handleHighlightArr(titleArr, key): titleArr;
+    let authorArr = data.author.split(key);
+    let author = data.author.indexOf(key) != -1 ?_this.handleHighlightArr(authorArr, key): authorArr;
+    let summaryArr = data.summary.split(key);
+    let summary = data.summary.indexOf(key) != -1 ?_this.handleHighlightArr(summaryArr, key): summaryArr;
+    data.title = title;
+    data.author = author;
+    data.summary = summary;
+    return data;
+  },
+  handleHighlightArr(list, key){
+    let arr = [];
+    list.forEach((item, index) => {
+      arr.push(item);
+      if(index != list.length-1)
+        arr.push(key)
+      })
+    return arr;
   },
   // 判断一首诗是否命中关键词
   poemMatchKey(poem,key){
@@ -47,27 +72,31 @@ Page({
     _this.goPage(url);
   },
   getKeyword(e){
-    let _this = this, poemData;
-    if (e.detail.value){
-      poemData = _this.searchPoem(e.detail.value);
-      _this.setData({
-        keyword: e.detail.value
-      })
-    }else{
-      poemData = poemList
-    }
+    let _this = this, poemData,
+      keyword = e.detail.value.trim();
     _this.setData({
-      listData: poemData
+      keyword
+    },()=>{
+      if (keyword) {
+        poemData = _this.searchPoem(keyword);
+      } else {
+        poemData = poemList
+      }
+      _this.setData({
+        listData: poemData
+      }, () => {
+        if (_this.data.listData.length == 0) {
+          _this.setData({
+            noData: true
+          })
+        } else {
+          _this.setData({
+            noData: false
+          })
+        }
+      })
     })
-    if(_this.data.listData.length == 0){
-      _this.setData({
-        noData: true
-      })
-    }else{
-      _this.setData({
-        noData: false
-      })
-    }
+    
   },
   goPage(url){
     wx.navigateTo({
