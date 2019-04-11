@@ -4,6 +4,13 @@ Page({
 
   /**
    * 页面的初始数据
+   * 
+   * @param {number} optionid tab栏标记
+   * @param {object} poemData 诗句原始数据
+   * @param {array} content 处理后诗句内容
+   * @param {array} annotation 注释
+   * @param {array} translation 译文
+   * @param {array} appreciation 赏析
    */
   data: {
     optionid: 0,
@@ -16,13 +23,15 @@ Page({
 
   /**
    * 生命周期函数--监听页面加载
+   * 
+   * @param {object} options 页面传递参数对象
    */
   onLoad: function (options) {
-    let _this = this,
-      poemid = options.poemid,
-      poemData = poemList.filter((item, index)=>{
-        return poemid == item.poemid;
-      });
+    let _this = this;
+    let poemid = options.poemid;
+    let poemData = poemList.filter((item, index)=>{
+      return poemid == item.poemid;
+    });
     _this.setData({
       poemData: poemData[0]
     });
@@ -32,11 +41,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let _this = this,
-      content = _this.handleContent(_this.data.poemData.content),
-      annotation = _this.handleContent(_this.data.poemData.annotation),
-      translation = _this.handleContent(_this.data.poemData.translation),
-      appreciation = _this.handleContent(_this.data.poemData.appreciation);
+    let _this = this;
+    let content = _this.handleContent(_this.data.poemData.content);
+    let annotation = _this.handleContent(_this.data.poemData.annotation);
+    let translation = _this.handleContent(_this.data.poemData.translation);
+    let appreciation = _this.handleContent(_this.data.poemData.appreciation);
     _this.setData({
       content,
       annotation: _this.handleAnnotation(annotation),
@@ -51,10 +60,24 @@ Page({
   onShow: function () {
 
   },
+
+  /**
+   * 处理页面展示数据
+   * 
+   * @param {string} content 诗句各部分内容
+   * @return {array} 返回页面展示数据
+   */
   handleContent(content) {
     let _this = this;
     return content.split("\r\n");
   },
+
+  /**
+   * 处理注释粗体部分数据
+   * 
+   * @param {array} content 注释数组
+   * @return {array} 标注粗体后数组
+   */
   handleAnnotation(content){
     let _this = this,
       newArr = [];
@@ -68,8 +91,12 @@ Page({
     })
     return newArr;
   },
+
   /**
-   * tab选择
+   * tab栏选择
+   * 
+   * @event
+   * @param {object} e 节点对象
    */
   selectOption(e){
     let _this = this,
@@ -87,6 +114,7 @@ Page({
       animationData: animation.export()
     });
   },
+  
   /**
    * 生命周期函数--监听页面隐藏
    */
